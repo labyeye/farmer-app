@@ -1,25 +1,101 @@
 import React from "react";
-import { GestureHandlerRootView } from "react-native-gesture-handler"; // Import GestureHandlerRootView
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { Image } from "react-native";
 import Home1 from "./src/screen/Home1/Home1";
 import Home2 from "./src/screen/Home2/Home2";
 import Home3 from "./src/screen/Home3/Home3";
 import Select from "./src/screen/Select/Select";
-import Home4 from "./src/screen/Home4/Home4";
-import Home5 from "./src/screen/Home5/Home5";
 import LoginFarmer from "./src/screen/LoginFarmer/LoginFarmer";
 import SignUpFarmer from "./src/screen/SignUpFarmer/SignUpFarmer";
 import CustomerLogin from "./src/screen/CustomerLogin/CustomerLogin";
 import CustomerSignUp from "./src/screen/CustomerSignUp/CustomerSignUp";
 import CustomerDashboard from "./src/screen/CustomerDashboard/CustomerDashboard";
-// Import other screens here
+import Home4 from "./src/screen/Home4/Home4";
+import Home5 from "./src/screen/Home5/Home5";
 
 const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
+
+const DashboardTabs = () => {
+  return (
+    <Tab.Navigator
+      screenOptions={({ route }) => ({
+        tabBarIcon: ({ focused }) => {
+          let iconName;
+          if (route.name === "Home") {
+            iconName = focused
+              ? require("./assets/icons/home-focused.png")
+              : require("./assets/icons/home.png");
+          } else if (route.name === "Messages") {
+            iconName = focused
+              ? require("./assets/icons/mail-focused.png")
+              : require("./assets/icons/mail.png");
+          } else if (route.name === "Profile") {
+            iconName = focused
+              ? require("./assets/icons/profile-focused.png")
+              : require("./assets/icons/profile.png");
+          } else if (route.name === "Settings") {
+            iconName = focused
+              ? require("./assets/icons/settings-focused.png")
+              : require("./assets/icons/settings.png");
+          } else if (route.name === "Wallet") {
+            iconName = focused
+              ? require("./assets/icons/wallet-focused.png")
+              : require("./assets/icons/wallet.png");
+          }
+
+          return <Image source={iconName} style={{ width: 30, height: 30 }} />;
+        },
+        tabBarActiveTintColor: "#4bf986",
+        tabBarInactiveTintColor: "white",
+        tabBarShowLabel:false,
+        tabBarStyle: {
+          backgroundColor: "rgba(255, 255, 255, 0.2)",
+          borderTopColor: "transparent",
+          borderRadius: 30,
+          position: 'absolute', // Ensure it doesn't affect other layouts
+          bottom: 10, // Position it slightly above the bottom
+          left: 10,
+          right: 10,
+          height: 60, // Set height if needed
+      },
+      })}
+    >
+      <Tab.Screen
+        name="Home"
+        component={CustomerDashboard}
+        options={{ headerShown: false }}
+      />
+      <Tab.Screen
+        name="Messages"
+        component={CustomerDashboard}
+        options={{ headerShown: false }}
+      />
+      <Tab.Screen
+        name="Profile"
+        component={CustomerDashboard}
+        options={{ headerShown: false }}
+      />
+      <Tab.Screen
+        name="Settings"
+        component={CustomerDashboard}
+        options={{ headerShown: false }}
+      />
+      <Tab.Screen
+        name="Wallet"
+        component={CustomerDashboard}
+        options={{ headerShown: false }}
+      />
+    </Tab.Navigator>
+  );
+};
 
 const App = () => {
   return (
-    <GestureHandlerRootView style={{ flex: 1 }}> 
+    <GestureHandlerRootView style={{ flex: 1 }}>
       <NavigationContainer>
         <Stack.Navigator initialRouteName="Home1">
           <Stack.Screen
@@ -47,7 +123,7 @@ const App = () => {
             component={Home5}
             options={{ headerShown: false }}
           />
-           <Stack.Screen
+          <Stack.Screen
             name="Select"
             component={Select}
             options={{ headerShown: false }}
@@ -74,14 +150,13 @@ const App = () => {
           />
           <Stack.Screen
             name="CustomerDashboard"
-            component={CustomerDashboard}
+            component={DashboardTabs}
             options={{ headerShown: false }}
           />
-          
         </Stack.Navigator>
       </NavigationContainer>
     </GestureHandlerRootView>
   );
-}
+};
 
 export default App;
