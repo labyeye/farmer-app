@@ -17,6 +17,8 @@ import Home4 from "./src/screen/Home4/Home4";
 import Home5 from "./src/screen/Home5/Home5";
 import FarmerDashBoard from "./src/screen/FarmerDashBoard/FarmerDashboard";
 import FarmerWallet from "./src/screen/FarmerWallet/FarmerWallet";
+import CustomerWallet from "./src/screen/CustomerWaller/CustomerWallet";
+import CustomerProfile from "./src/screen/CustomerProfile/CustomerProfile";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -49,7 +51,7 @@ const DashboardTabs = () => {
               : require("./assets/icons/wallet.png");
           }
 
-          return <Image source={iconName} style={{ width: 30, height: 30 ,alignSelf:"center",justifyContent:"center" }} />;
+          return <Image source={iconName} style={{ marginTop:20,width: 30, height: 30 ,alignSelf:"center",justifyContent:"center" }} />;
         },
         tabBarActiveTintColor: "#4bf986",
         tabBarInactiveTintColor: "white",
@@ -78,7 +80,7 @@ const DashboardTabs = () => {
       />
       <Tab.Screen
         name="Profile"
-        component={CustomerDashboard}
+        component={CustomerProfile}
         options={{ headerShown: false }}
       />
       <Tab.Screen
@@ -88,7 +90,7 @@ const DashboardTabs = () => {
       />
       <Tab.Screen
         name="Wallet"
-        component={CustomerDashboard}
+        component={CustomerWallet}
         options={{ headerShown: false }}
       />
     </Tab.Navigator>
@@ -122,7 +124,7 @@ const FarmerTabs = () => {
               : require("./assets/icons/wallet.png");
           }
 
-          return <Image source={iconName} style={{ width: 30, height: 30 ,alignSelf:"center",justifyContent:"center" }} />;
+          return <Image source={iconName} style={{ marginTop:20,width: 30, height: 30 ,alignSelf:"center",justifyContent:"center" }} />;
         },
         tabBarActiveTintColor: "#4bf986",
         tabBarInactiveTintColor: "white",

@@ -17,7 +17,7 @@ const LoginFarmer = ({ navigation }) => {
   const [password, setPassword] = useState("");
   const handleLogin = async () => {
     try {
-      const response = await fetch("http://10.0.2.2:5100/api/users/login", {
+      const response = await fetch("http://172.20.10.6:5100/api/users/login", {
         // Replace with your IP address if needed
         method: "POST",
         headers: {

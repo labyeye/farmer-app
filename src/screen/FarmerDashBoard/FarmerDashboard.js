@@ -148,7 +148,7 @@ const FarmerDashBoard = () => {
       <View
         style={{
           width: "90%",
-          height: "32%",
+          height: "40%",
           justifyContent: "center",
           marginTop: 15,
         }}

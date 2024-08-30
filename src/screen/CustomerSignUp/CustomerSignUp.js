@@ -18,7 +18,7 @@ const CustomerSignUp = ({ navigation }) => {
   const [password, setPassword] = useState("");
   const handleSignUp = async () => {
     try {
-      const response = await fetch("http://10.0.2.2:5100/api/users/register", {
+      const response = await fetch("http://172.20.10.6:5100/api/users/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

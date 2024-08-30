@@ -11,14 +11,14 @@ import {
 } from "react-native";
 import { Dimensions } from "react-native";
 
-const FarmerWallet = () => {
+const CustomerWallet = () => {
   // Static data for the chart
   const transactions = [
     {
       id: "1",
       name: "Rajesh",
       food: "Wheat",
-      price: "+₹1000",
+      price: "-₹1000",
       date: "2024-08-01",
     },
     { id: "2", name: "Amit", food: "Rice", price: "+₹800", date: "2024-08-02" },
@@ -26,21 +26,21 @@ const FarmerWallet = () => {
       id: "3",
       name: "Anjali",
       food: "Apple",
-      price: "+₹1200",
+      price: "-₹1200",
       date: "2024-08-03",
     },
     {
       id: "4",
       name: "Suman",
       food: "Tomato",
-      price: "+₹600",
+      price: "-₹600",
       date: "2024-08-04",
     },
     {
       id: "5",
       name: "Ravi",
       food: "Milk",
-      price: "+₹1500",
+      price: "-₹1500",
       date: "2024-08-05",
     },
   ];
@@ -55,7 +55,7 @@ const FarmerWallet = () => {
         />
         <View style={styles.transactionDetails}>
           <Text style={styles.transactionName}>
-            Recieved Money to {item.name}
+            Sent Money to {item.name}
           </Text>
           <Text style={styles.transactionDate}>{item.date}</Text>
           <Text style={{ color: "cyan", fontSize: 13 }}>View Details</Text>
@@ -83,7 +83,7 @@ const FarmerWallet = () => {
             source={require("../../../assets/dashboardcustomer/profile.png")}
           />
           <Text style={{ color: "white", fontWeight: "bold", marginLeft: 10 }}>
-            Yash Sriwastav
+            Labh Bothra
           </Text>
         </View>
         <View
@@ -130,18 +130,30 @@ const FarmerWallet = () => {
       >
         <Text style={{ fontSize: 50, color: "white" }}>
           <Text> ₹</Text>
-          <Text>20000</Text>
+          <Text>5000</Text>
         </Text>
       </View>
       <View
         style={{
-          width: "90%",
+          width: "75%",
           height: "5%",
           flexDirection: "row",
-          justifyContent: "center",
+          justifyContent: "space-between",
           marginTop: 35,
         }}
       >
+        <TouchableOpacity
+          style={{
+            width: "40%",
+            height: "100%",
+            backgroundColor: "green",
+            borderRadius: 40,
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <Text style={{ color: "white", fontWeight: "bold" }}>Add Funds</Text>
+        </TouchableOpacity>
         <TouchableOpacity
           style={{
             width: "40%",
@@ -241,10 +253,10 @@ const styles = StyleSheet.create({
     fontSize: 12,
   },
   transactionAmount: {
-    color: "green",
+    color: "red",
     fontSize: 16,
     fontWeight: "bold",
   },
 });
 
-export default FarmerWallet;
+export default CustomerWallet;
