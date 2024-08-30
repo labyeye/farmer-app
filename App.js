@@ -16,6 +16,7 @@ import CustomerDashboard from "./src/screen/CustomerDashboard/CustomerDashboard"
 import Home4 from "./src/screen/Home4/Home4";
 import Home5 from "./src/screen/Home5/Home5";
 import FarmerDashBoard from "./src/screen/FarmerDashBoard/FarmerDashboard";
+import FarmerWallet from "./src/screen/FarmerWallet/FarmerWallet";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -160,7 +161,7 @@ const FarmerTabs = () => {
       />
       <Tab.Screen
         name="Wallet"
-        component={CustomerDashboard}
+        component={FarmerWallet}
         options={{ headerShown: false }}
       />
     </Tab.Navigator>

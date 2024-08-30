@@ -10,6 +10,7 @@ import {
   ImageBackground,
 } from "react-native";
 import { useState,useRoute } from "react";
+import { Alert } from "react-native";
 
 const CustomerSignUp = ({ navigation }) => {
   const [name, setName] = useState("");
