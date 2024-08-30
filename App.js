@@ -93,6 +93,79 @@ const DashboardTabs = () => {
     </Tab.Navigator>
   );
 };
+const FarmerTabs = () => {
+  return (
+    <Tab.Navigator
+      screenOptions={({ route }) => ({
+        tabBarIcon: ({ focused }) => {
+          let iconName;
+          if (route.name === "Home") {
+            iconName = focused
+              ? require("./assets/icons/home-focused.png")
+              : require("./assets/icons/home.png");
+          } else if (route.name === "Messages") {
+            iconName = focused
+              ? require("./assets/icons/mail-focused.png")
+              : require("./assets/icons/mail.png");
+          } else if (route.name === "Profile") {
+            iconName = focused
+              ? require("./assets/icons/profile-focused.png")
+              : require("./assets/icons/profile.png");
+          } else if (route.name === "Settings") {
+            iconName = focused
+              ? require("./assets/icons/settings-focused.png")
+              : require("./assets/icons/settings.png");
+          } else if (route.name === "Wallet") {
+            iconName = focused
+              ? require("./assets/icons/wallet-focused.png")
+              : require("./assets/icons/wallet.png");
+          }
+
+          return <Image source={iconName} style={{ width: 30, height: 30 ,alignSelf:"center",justifyContent:"center" }} />;
+        },
+        tabBarActiveTintColor: "#4bf986",
+        tabBarInactiveTintColor: "white",
+        tabBarShowLabel:false,
+        tabBarStyle: {
+          backgroundColor: "rgba(255, 255, 255, 0.2)",
+          borderTopColor: "transparent",
+          borderRadius: 30,
+          position: 'absolute', // Ensure it doesn't affect other layouts
+          bottom: 10, // Position it slightly above the bottom
+          left: 10,
+          right: 10,
+          height: 60, // Set height if needed
+      },
+      })}
+    >
+      <Tab.Screen
+        name="Home"
+        component={FarmerDashBoard}
+        options={{ headerShown: false }}
+      />
+      <Tab.Screen
+        name="Messages"
+        component={FarmerDashBoard}
+        options={{ headerShown: false }}
+      />
+      <Tab.Screen
+        name="Profile"
+        component={FarmerDashBoard}
+        options={{ headerShown: false }}
+      />
+      <Tab.Screen
+        name="Settings"
+        component={FarmerDashBoard}
+        options={{ headerShown: false }}
+      />
+      <Tab.Screen
+        name="Wallet"
+        component={CustomerDashboard}
+        options={{ headerShown: false }}
+      />
+    </Tab.Navigator>
+  );
+};
 
 const App = () => {
   return (
@@ -156,7 +229,7 @@ const App = () => {
           />
           <Stack.Screen
             name="FarmerDashBoard"
-            component={FarmerDashBoard}
+            component={FarmerTabs}
             options={{ headerShown: false }}
           />
         </Stack.Navigator>
