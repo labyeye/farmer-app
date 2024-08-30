@@ -13,6 +13,10 @@ const Home5 = ({ navigation }) => {
           <Text style={styles.farm}>Fast</Text>
           <Text style={styles.ies}> Delivery</Text>
         </Text>
+        <View style={{width:"80%"}}>
+        <Text style={{textAlign:'center',color:'white',marginTop:20}}>Get your food delivered fast. Quick, reliable, and on time!</Text>
+
+        </View>
       </View>
       <View style={styles.nextcontainer}>
         <TouchableOpacity style={{width:"100%",height:"100%",alignItems:"center",justifyContent:'flex-end'}}onPress={() => navigation.navigate("Select")}>

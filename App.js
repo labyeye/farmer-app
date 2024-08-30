@@ -12,6 +12,7 @@ import LoginFarmer from "./src/screen/LoginFarmer/LoginFarmer";
 import SignUpFarmer from "./src/screen/SignUpFarmer/SignUpFarmer";
 import CustomerLogin from "./src/screen/CustomerLogin/CustomerLogin";
 import CustomerSignUp from "./src/screen/CustomerSignUp/CustomerSignUp";
+import CustomerDashboard from "./src/screen/CustomerDashboard/CustomerDashboard";
 // Import other screens here
 
 const Stack = createNativeStackNavigator();
@@ -69,6 +70,11 @@ const App = () => {
           <Stack.Screen
             name="CustomerSignUp"
             component={CustomerSignUp}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="CustomerDashboard"
+            component={CustomerDashboard}
             options={{ headerShown: false }}
           />
           

@@ -58,10 +58,14 @@ const Home2 = () => {
         </View>
         <View style={styles.nextcontainer}>
           <View style={styles.sliderTrack}>
+          <Text style={{textAlign:"center",color:'white'}}>Swipe to Get Started</Text>
+
             <PanGestureHandler onGestureEvent={AnimatedGestureHandler}>
               <Animated.View style={[styles.sliderThumb, animatedStyle]}>
                 <Image style={{width:20,height:20}}source={require('../../../assets/homescreen/arrow.png')}/>
+                
               </Animated.View>
+              
             </PanGestureHandler>
           </View>
         </View>

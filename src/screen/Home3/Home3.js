@@ -13,6 +13,10 @@ const Home3 = ({ navigation }) => {
           <Text style={styles.farm}>Order for</Text>
           <Text style={styles.ies}> Food</Text>
         </Text>
+        <View style={{width:"80%"}}>
+        <Text style={{textAlign:'center',color:'white',marginTop:20}}>Order your favorite food quickly and easily. Browse, select, and enjoy!</Text>
+
+        </View>
       </View>
       <View style={styles.nextcontainer}>
         <TouchableOpacity style={{width:"100%",height:"100%",alignItems:"center",justifyContent:'flex-end'}}onPress={() => navigation.navigate("Home4")}>

@@ -6,156 +6,131 @@ import {
   View,
   TouchableOpacity,
   TextInput,
+  SafeAreaView,
+  ImageBackground,
 } from "react-native";
+
 const CustomerLogin = ({ navigation }) => {
   return (
-    <View style={styles.container}>
-      <View
-        style={{
-          width: "100%",
-          height: "10%",
-          alignItems: "center",
-          justifyContent: "flex-start",
-
-          marginTop: 50,
-        }}
-      >
-        <Image
-          style={{
-            width: "70%",
-            height: "70%",
-            alignSelf: "center",
-            flexDirection: "column",
-          }}
-          resizeMode="contain"
-          source={require("../../../assets/homescreen/object.png")}
-        />
-        <Text style={styles.title}>
-          <Text style={styles.farm}>Farm</Text>
-          <Text style={styles.ies}>ies</Text>
-        </Text>
-      </View>
-      <View style={styles.objcontainer}>
-        <Image
-          style={styles.image}
-          resizeMode="contain"
-          source={require("../../../assets/select/customer.png")}
-        />
-        <Text style={{ fontSize: 40, color: "white" }}>Let's You In</Text>
-        <View
-          style={{
-            height: "100%",
-            width: "100%",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
-          <View
-            style={{
-              width: "100%",
-              height: "100%",
-              alignItems: "center",
-            }}
-          >
-            <View
-              style={{
-                width: "100%",
-                height: "30%",
-                alignItems: "center",
-                justifyContent: "space-between",
-              }}
-            >
+    
+      <SafeAreaView style={styles.container}>
+        <View style={styles.objcontainer}>
+          <Image
+            style={styles.image}
+            resizeMode="contain"
+            source={require("../../../assets/login/corn.png")}
+          />
+          <Text style={styles.headerText}>Let's You In</Text>
+          <View style={styles.inputsContainer}>
+            <View style={styles.textInputContainer}>
               <TextInput
-                style={{
-                  width: "70%",
-                  height: "38%",
-                  backgroundColor: "white",
-                  borderRadius: 10,
-                  paddingLeft: 10,
-                }}
+                style={styles.textInput}
                 placeholder="Enter Phone Number"
+                placeholderTextColor="grey"
               />
               <TextInput
-                style={{
-                  width: "70%",
-                  height: "38%",
-                  backgroundColor: "white",
-                  borderRadius: 10,
-                  paddingLeft: 10,
-                }}
+                style={styles.textInput}
                 placeholder="Enter Password"
+                placeholderTextColor="grey"
               />
             </View>
-            <View
-              style={{
-                width: "100%",
-                height: "40%",
-                marginTop:30,
-                alignItems: "center",
-                justifyContent: "space-between",
-              }}
-            >
-              <TouchableOpacity style={styles.farmer}>
-                <Text
-                  style={{ fontSize: 17, color: "white", fontWeight: "bold" }}
-                >
-                  Login
-                </Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={{
-                  width: "70%",
-                  height: "25%",
-                  borderRadius: 50,
-                  backgroundColor: "black",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <Image
-                  style={{ width: "78%", height: "59%" }}
-                  source={require("../../../assets/login/googlelogin.png")}
-                />
+            <View style={styles.buttonsContainer}>
+              <TouchableOpacity style={styles.farmer} onPress={() => navigation.navigate('CustomerDashboard')}>
+                <Text style={styles.buttonText}>Login</Text>
               </TouchableOpacity>
               <Text
-                style={{ color: "white", fontWeight: "bold", marginBottom: 50 }}
+                style={styles.signUpText}
                 onPress={() => navigation.navigate("CustomerSignUp")}
               >
-                No Account !! SignUp
+                Don't have an Account ? SignUp
               </Text>
+              {/* <TouchableOpacity style={styles.googleButton}>
+                <Image
+                  style={styles.googleImage}
+                  resizeMode="contain"
+                  source={require("../../../assets/login/googlelogin.png")}
+                />
+              </TouchableOpacity> */}
             </View>
           </View>
         </View>
-      </View>
-    </View>
+      </SafeAreaView>
   );
 };
+
 const styles = StyleSheet.create({
+  background: {
+    flex: 1,
+    width: "100%",
+    height: "100%",
+  },
   container: {
     flex: 1,
-    backgroundColor: "#191A1F",
     alignItems: "center",
   },
   farmer: {
-    width: "70%",
-    height: "20%",
-    borderRadius: 50,
-    backgroundColor: "green",
+    width: "80%",
+    height: "37%",
+    marginTop:20,
+    borderRadius: 10,
+    backgroundColor: "#007FFF",
     alignItems: "center",
     justifyContent: "center",
+  },
+  headerText: {
+    fontSize: 40,
+    color: "black",
+  },
+  textInput: {
+    width: "80%",
+    height: 50,
+    backgroundColor: "rgba(255, 255, 255, 0.4)", // semi-transparent white
+    borderRadius: 10,
+    paddingLeft: 10,
+    marginBottom: 15,
+  },
+  textInputContainer: {
+    width: "100%",
+    height: "30%",
     alignItems: "center",
+    justifyContent: "space-between",
   },
-  title: {
-    color: "#2B964F",
-    fontWeight: "bold",
-    fontSize: 20,
+  inputsContainer: {
+    height: "50%",
+    width: "100%",
+    marginTop: 30,
+    alignItems: "center",
+    justifyContent: "space-between",
   },
-  farm: {
-    color: "green",
+  buttonsContainer: {
+    width: "100%",
+    height: "50%",
+    alignItems: "center",
+    justifyContent: "space-between",
   },
-  ies: {
+  buttonText: {
+    fontSize: 17,
     color: "white",
+    fontWeight: "bold",
+  },
+  signUpText: {
+    color: "black",
+    fontWeight: "bold",
+    marginBottom: 40,
+    marginTop:5,
+  },
+  googleButton: {
+    width: "80%",
+    height: "37%",
+    borderRadius: 10,
+    backgroundColor: "black",
+    alignItems: "center",
+    justifyContent: "center",
+    overflow: "hidden",
+  },
+  googleImage: {
+    width: "70%",
+    height: "90%",
   },
   image: {
     width: "60%",
@@ -171,19 +146,6 @@ const styles = StyleSheet.create({
     marginTop: 20,
     gap: 20,
   },
-  nextcontainer: {
-    width: "100%",
-    borderRadius: 10,
-
-    height: "30%",
-    alignItems: "center",
-    justifyContent: "flex-end",
-  },
-  next: {
-    marginTop: 90,
-    width: "50%",
-    height: "20%",
-    alignContent: "flex-end",
-  },
 });
+
 export default CustomerLogin;
