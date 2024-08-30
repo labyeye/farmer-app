@@ -9,7 +9,6 @@ import {
   SafeAreaView,
   ImageBackground,
 } from "react-native";
-import { useRoute } from "@react-navigation/native";
 import { useState } from "react";
 import { Alert } from "react-native";
 
@@ -33,7 +32,7 @@ const LoginFarmer = ({ navigation }) => {
       const data = await response.json();
 
       if (response.ok) {
-        navigation.navigate("CustomerDashboard"); // Navigate to dashboard after successful login
+        navigation.navigate("FarmerDashBoard"); // Navigate to dashboard after successful login
       } else {
         Alert.alert("Error", data.message || "An error occurred");
       }

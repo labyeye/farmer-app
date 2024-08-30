@@ -27,12 +27,14 @@ const SignUpFarmer = ({ navigation }) => {
           name,
           phone,
           password,
+          type: "Farmer", // Adding type as "Farmer"
         }),
       });
 
       const data = await response.json();
 
       if (response.ok) {
+        Alert.alert("Success", "Account created successfully");
         navigation.navigate("LoginFarmer");
       } else {
         Alert.alert("Error", data.message || "An error occurred");

@@ -15,6 +15,7 @@ import CustomerSignUp from "./src/screen/CustomerSignUp/CustomerSignUp";
 import CustomerDashboard from "./src/screen/CustomerDashboard/CustomerDashboard";
 import Home4 from "./src/screen/Home4/Home4";
 import Home5 from "./src/screen/Home5/Home5";
+import FarmerDashBoard from "./src/screen/FarmerDashBoard/FarmerDashboard";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -151,6 +152,11 @@ const App = () => {
           <Stack.Screen
             name="CustomerDashboard"
             component={DashboardTabs}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="FarmerDashBoard"
+            component={FarmerDashBoard}
             options={{ headerShown: false }}
           />
         </Stack.Navigator>
