@@ -9,52 +9,89 @@ import {
   SafeAreaView,
   ImageBackground,
 } from "react-native";
+import { useRoute } from "@react-navigation/native";
+import { useState } from "react";
+import { Alert } from "react-native";
 
 const LoginFarmer = ({ navigation }) => {
+  const [phone, setPhone] = useState("");
+  const [password, setPassword] = useState("");
+  const handleLogin = async () => {
+    try {
+      const response = await fetch("http://10.0.2.2:5100/api/users/login", {
+        // Replace with your IP address if needed
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          phone,
+          password,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        navigation.navigate("CustomerDashboard"); // Navigate to dashboard after successful login
+      } else {
+        Alert.alert("Error", data.message || "An error occurred");
+      }
+    } catch (error) {
+      console.error("Error details:", error);
+      Alert.alert("Error", "An error occurred");
+    }
+  };
   return (
-    
-      <SafeAreaView style={styles.container}>
-        <View style={styles.objcontainer}>
-          <Image
-            style={styles.image}
-            resizeMode="contain"
-            source={require("../../../assets/login/wheat.png")}
-          />
-          <Text style={styles.headerText}>Let's You In</Text>
-          <View style={styles.inputsContainer}>
-            <View style={styles.textInputContainer}>
-              <TextInput
-                style={styles.textInput}
-                placeholder="Enter Phone Number"
-                placeholderTextColor="grey"
-              />
-              <TextInput
-                style={styles.textInput}
-                placeholder="Enter Password"
-                placeholderTextColor="grey"
-              />
-            </View>
-            <View style={styles.buttonsContainer}>
-              <TouchableOpacity style={styles.farmer}>
-                <Text style={styles.buttonText}>Login</Text>
-              </TouchableOpacity>
-              <Text
-                style={styles.signUpText}
-                onPress={() => navigation.navigate("SignUpFarmer")}
-              >
-                Don't have an Account ? SignUp
-              </Text>
-              {/* <TouchableOpacity style={styles.googleButton}>
+    <SafeAreaView style={styles.container}>
+      <View style={styles.objcontainer}>
+        <Image
+          style={styles.image}
+          resizeMode="contain"
+          source={require("../../../assets/login/wheat.png")}
+        />
+        <Text style={styles.headerText}>Let's You In</Text>
+        <View style={styles.inputsContainer}>
+          <View style={styles.textInputContainer}>
+            <TextInput
+              style={styles.textInput}
+              placeholder="Enter Phone Number"
+              placeholderTextColor="grey"
+              value={phone}
+              onChangeText={setPhone}
+            />
+            <TextInput
+              style={styles.textInput}
+              placeholder="Enter Password"
+              placeholderTextColor="grey"
+              value={password}
+              onChangeText={setPassword}
+            />
+          </View>
+          <View style={styles.buttonsContainer}>
+            <TouchableOpacity
+              style={styles.farmer}
+              onPress={handleLogin}
+            >
+              <Text style={styles.buttonText}>Login</Text>
+            </TouchableOpacity>
+            <Text
+              style={styles.signUpText}
+              onPress={() => navigation.navigate("SignUpFarmer")}
+            >
+              Don't have an Account ? SignUp
+            </Text>
+            {/* <TouchableOpacity style={styles.googleButton}>
                 <Image
                   style={styles.googleImage}
                   resizeMode="contain"
                   source={require("../../../assets/login/googlelogin.png")}
                 />
               </TouchableOpacity> */}
-            </View>
           </View>
         </View>
-      </SafeAreaView>
+      </View>
+    </SafeAreaView>
   );
 };
 
@@ -71,7 +108,7 @@ const styles = StyleSheet.create({
   farmer: {
     width: "80%",
     height: "37%",
-    marginTop:20,
+    marginTop: 20,
     borderRadius: 10,
     backgroundColor: "#007FFF",
     alignItems: "center",
@@ -117,7 +154,7 @@ const styles = StyleSheet.create({
     color: "black",
     fontWeight: "bold",
     marginBottom: 40,
-    marginTop:5,
+    marginTop: 5,
   },
   googleButton: {
     width: "80%",

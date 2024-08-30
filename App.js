@@ -47,7 +47,7 @@ const DashboardTabs = () => {
               : require("./assets/icons/wallet.png");
           }
 
-          return <Image source={iconName} style={{ width: 30, height: 30 }} />;
+          return <Image source={iconName} style={{ width: 30, height: 30 ,alignSelf:"center",justifyContent:"center" }} />;
         },
         tabBarActiveTintColor: "#4bf986",
         tabBarInactiveTintColor: "white",

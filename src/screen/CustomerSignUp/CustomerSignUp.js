@@ -9,8 +9,39 @@ import {
   SafeAreaView,
   ImageBackground,
 } from "react-native";
+import { useState,useRoute } from "react";
 
 const CustomerSignUp = ({ navigation }) => {
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [password, setPassword] = useState("");
+  const handleSignUp = async () => {
+    try {
+      const response = await fetch("http://10.0.2.2:5100/api/users/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          phone,
+          password,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        Alert.alert("Success", "Account created successfully");
+        navigation.navigate("LoginFarmer");
+      } else {
+        Alert.alert("Error", data.message || "An error occurred");
+      }
+    } catch (error) {
+      console.error("Error details:", error);
+      Alert.alert("Error", "An error occurred");
+    }
+  };
   return (
     
       <SafeAreaView style={styles.container}>
@@ -27,20 +58,26 @@ const CustomerSignUp = ({ navigation }) => {
                 style={styles.textInput}
                 placeholder="Enter Name"
                 placeholderTextColor="grey"
+                value={name}
+                onChangeText={setName}
               />
               <TextInput
                 style={styles.textInput}
                 placeholder="Enter Phone Number"
                 placeholderTextColor="grey"
+                value={phone}
+                onChangeText={setPhone}
               />
               <TextInput
                 style={styles.textInput}
                 placeholder="Enter Password"
                 placeholderTextColor="grey"
+                value={password}
+                onChangeText={setPassword}
               />
             </View>
             <View style={styles.buttonsContainer}>
-              <TouchableOpacity style={styles.farmer}>
+              <TouchableOpacity style={styles.farmer} onPress={handleSignUp}>
                 <Text style={styles.buttonText}>Create Account</Text>
               </TouchableOpacity>
               <Text
