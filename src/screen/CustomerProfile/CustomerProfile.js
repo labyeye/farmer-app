@@ -13,7 +13,6 @@ import { Dimensions } from "react-native";
 
 const CustomerProfile = () => {
   // Static data for the chart
-  
 
   return (
     <SafeAreaView style={styles.container}>
@@ -23,36 +22,123 @@ const CustomerProfile = () => {
           width: "60%",
           alignItems: "center",
           justifyContent: "center",
-          
+
           flexDirection: "row",
         }}
       >
-       <Image style={{width:"100%",height:"100%"}} resizeMode="contain"source={require('../../../assets/dashboardcustomer/profile.png')}/>
+        <Image
+          style={{ width: "100%", height: "100%" }}
+          resizeMode="contain"
+          source={require("../../../assets/dashboardcustomer/profile.png")}
+        />
       </View>
       <View
         style={{
-          width: "80%",
+          width: "90%",
           height: "40%",
           marginTop: 35,
-          justifyContent:"space-between"
+          justifyContent: "space-between",
         }}
       >
-        <View style={{width:"95%",height:"20%",justifyContent:'center',backgroundColor:'black',borderRadius:30}}>
-            <Text style={{fontSize:16,color:"white",marginLeft:20}}>Name: Labh</Text>
+        <View
+          style={{
+            width: "100%",
+            height: "20%",
+            flexDirection: "row",
+            backgroundColor: "black",
+            borderRadius: 20,
+            alignItems: "center",
+            
+          }}
+        >
+          <Image
+            style={{
+              width: "10%",
+              height: "50%",
+              overflow: "hidden",
+              marginLeft:20
+            }}
+         
+            source={require("../../../assets/dashboardcustomer/details.png")}
+          />
+          <Text style={{ fontSize: 16, color: "white", marginLeft: 20 }}>
+            Details
+          </Text>
         </View>
-        <View style={{width:"95%",height:"20%",justifyContent:'center',backgroundColor:'black',borderRadius:30}}>
-            <Text style={{fontSize:16,color:"white",marginLeft:20}}>Gender: Male</Text>
+        <View
+          style={{
+            width: "100%",
+            height: "20%",
+            flexDirection: "row",
+            backgroundColor: "black",
+            borderRadius: 20,
+            alignItems: "center",
+          }}
+        >
+           <Image
+            style={{
+              width: "10%",
+              height: "50%",
+              overflow: "hidden",
+              marginLeft:20
+            }}
+            resizeMode="contain"
+            source={require("../../../assets/dashboardcustomer/orders.png")}
+          />
+          <Text style={{ fontSize: 16, color: "white", marginLeft: 20 }}>
+            Orders
+          </Text>
         </View>
-        <View style={{width:"95%",height:"20%",justifyContent:'center',backgroundColor:'black',borderRadius:30}}>
-            <Text style={{fontSize:16,color:"white",marginLeft:20}}>Email: labh@gmail.com</Text>
+        <View
+          style={{
+            width: "100%",
+            height: "20%",
+            flexDirection: "row",
+            backgroundColor: "black",
+            borderRadius: 20,
+            alignItems: "center",
+          }}
+        >
+           <Image
+            style={{
+              width: "10%",
+              height: "50%",
+              overflow: "hidden",
+              marginLeft:20
+            }}
+            resizeMode="contain"
+            source={require("../../../assets/dashboardcustomer/subscribe.png")}
+          />
+          <Text style={{ fontSize: 16, color: "white", marginLeft: 20 }}>
+            Subscribe
+          </Text>
+          
         </View>
-        <View style={{width:"95%",height:"20%",justifyContent:'center',backgroundColor:'black',borderRadius:30}}>
-            <Text style={{fontSize:16,color:"white",marginLeft:20}}>Phone: +919234112345</Text>        
+        <View
+          style={{
+            width: "100%",
+            height: "20%",
+            flexDirection: "row",
+            backgroundColor: "black",
+            borderRadius: 20,
+            alignItems: "center",
+          }}
+        >
+           <Image
+            style={{
+              width: "10%",
+              height: "50%",
+              overflow: "hidden",
+              marginLeft:20
+            }}
+            resizeMode="contain"
+            source={require("../../../assets/dashboardcustomer/help.png")}
+          />
+          <Text style={{ fontSize: 16, color: "white", marginLeft: 20 }}>
+            Help and Support
+          </Text>
         </View>
-        
-        
       </View>
-      
 
       {/* Transactions FlatList */}
       <View
@@ -63,9 +149,7 @@ const CustomerProfile = () => {
           alignItems: "center",
           justifyContent: "space-between",
         }}
-      >
-        
-      </View>
+      ></View>
 
       <View style={{ width: "95%", height: "25%", marginTop: 10 }}></View>
     </SafeAreaView>

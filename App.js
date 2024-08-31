@@ -3,7 +3,7 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Image } from "react-native";
+import { Image, Platform } from "react-native";
 import Home1 from "./src/screen/Home1/Home1";
 import Home2 from "./src/screen/Home2/Home2";
 import Home3 from "./src/screen/Home3/Home3";
@@ -17,8 +17,12 @@ import Home4 from "./src/screen/Home4/Home4";
 import Home5 from "./src/screen/Home5/Home5";
 import FarmerDashBoard from "./src/screen/FarmerDashBoard/FarmerDashboard";
 import FarmerWallet from "./src/screen/FarmerWallet/FarmerWallet";
-import CustomerWallet from "./src/screen/CustomerWaller/CustomerWallet";
+import CustomerWallet from "./src/screen/CustomerWallet/CustomerWallet";
 import CustomerProfile from "./src/screen/CustomerProfile/CustomerProfile";
+import FarmerProfile from "./src/screen/FarmerProfile/FarmerProfile";
+import FarmerSettings from "./src/screen/FarmerSettings/FarmerSettings";
+import FarmerChat from "./src/screen/FarmerChat/FarmerChat";
+import CustomerChat from "./src/screen/CustomerChat/CustomerChat";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -51,21 +55,32 @@ const DashboardTabs = () => {
               : require("./assets/icons/wallet.png");
           }
 
-          return <Image source={iconName} style={{ marginTop:20,width: 30, height: 30 ,alignSelf:"center",justifyContent:"center" }} />;
+          return (
+            <Image
+              source={iconName}
+              style={{
+                marginTop: Platform.OS === "ios" ? 25 : 0, 
+                width: 30,
+                height: 30,
+                alignSelf: "center",
+                justifyContent: "center",
+              }}
+            />
+          );
         },
         tabBarActiveTintColor: "#4bf986",
         tabBarInactiveTintColor: "white",
-        tabBarShowLabel:false,
+        tabBarShowLabel: false,
         tabBarStyle: {
           backgroundColor: "rgba(255, 255, 255, 0.2)",
           borderTopColor: "transparent",
           borderRadius: 30,
-          position: 'absolute', // Ensure it doesn't affect other layouts
+          position: "absolute", // Ensure it doesn't affect other layouts
           bottom: 10, // Position it slightly above the bottom
           left: 10,
           right: 10,
           height: 60, // Set height if needed
-      },
+        },
       })}
     >
       <Tab.Screen
@@ -75,7 +90,7 @@ const DashboardTabs = () => {
       />
       <Tab.Screen
         name="Messages"
-        component={CustomerDashboard}
+        component={CustomerChat}
         options={{ headerShown: false }}
       />
       <Tab.Screen
@@ -124,21 +139,32 @@ const FarmerTabs = () => {
               : require("./assets/icons/wallet.png");
           }
 
-          return <Image source={iconName} style={{ marginTop:20,width: 30, height: 30 ,alignSelf:"center",justifyContent:"center" }} />;
+          return (
+            <Image
+              source={iconName}
+              style={{
+                marginTop: 20,
+                width: 30,
+                height: 30,
+                alignSelf: "center",
+                justifyContent: "center",
+              }}
+            />
+          );
         },
         tabBarActiveTintColor: "#4bf986",
         tabBarInactiveTintColor: "white",
-        tabBarShowLabel:false,
+        tabBarShowLabel: false,
         tabBarStyle: {
           backgroundColor: "rgba(255, 255, 255, 0.2)",
           borderTopColor: "transparent",
           borderRadius: 30,
-          position: 'absolute', // Ensure it doesn't affect other layouts
+          position: "absolute", // Ensure it doesn't affect other layouts
           bottom: 10, // Position it slightly above the bottom
           left: 10,
           right: 10,
           height: 60, // Set height if needed
-      },
+        },
       })}
     >
       <Tab.Screen
@@ -148,17 +174,17 @@ const FarmerTabs = () => {
       />
       <Tab.Screen
         name="Messages"
-        component={FarmerDashBoard}
+        component={FarmerChat}
         options={{ headerShown: false }}
       />
       <Tab.Screen
         name="Profile"
-        component={FarmerDashBoard}
+        component={FarmerProfile}
         options={{ headerShown: false }}
       />
       <Tab.Screen
         name="Settings"
-        component={FarmerDashBoard}
+        component={FarmerSettings}
         options={{ headerShown: false }}
       />
       <Tab.Screen
